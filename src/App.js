@@ -1,24 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import { Provider } from 'react-redux';
+import { HashRouter } from 'react-router-dom';
+import LoginForm from './components/session_form/login';
 
-function App() {
+
+function App({store}) {
   return (
+    <Provider store={ store }>
+    <HashRouter>
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <LoginForm />
+    
       </header>
     </div>
+    </HashRouter>
+  </Provider>
   );
 }
 
