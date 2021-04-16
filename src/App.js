@@ -1,7 +1,12 @@
-import './App.css';
+import './app.scss'
 import { Provider } from 'react-redux';
+import { Switch, Route } from "react-router-dom";
 import { HashRouter } from 'react-router-dom';
-import LoginForm from './components/session_form/login';
+
+import { AuthRoute, ProtectedRoute } from "./util/route_util";
+import Modal from './components/modal/modal'
+import Splash from './components/splash/splash'
+import Home from './components/home/home';
 
 
 function App({store}) {
@@ -10,9 +15,10 @@ function App({store}) {
     <HashRouter>
     <div className="App">
       <header className="App-header">
-        <LoginForm />
-    
       </header>
+        <Modal />
+        <AuthRoute path='/' component={Splash} />
+        <ProtectedRoute path='/home' component={Home} />
     </div>
     </HashRouter>
   </Provider>
