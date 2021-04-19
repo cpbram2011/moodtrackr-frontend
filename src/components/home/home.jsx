@@ -1,15 +1,19 @@
 import React from 'react';
-import {logout} from '../../actions/session_actions'
-import {useDispatch} from 'react-redux';
-
+import {journals} from '../../util/session_api_util';
 
 const HomePage = () => {
-    const dispatch = useDispatch();
 
+
+    const test = () => {
+        journals()
+          .then(res => console.log(res))
+          .catch(err => console.log(err))
+    }
     return (
         <div className="home">
-            <h1>Welcome Home!</h1>
-            <button onClick={() => dispatch(logout())}>Log Out</button>
+        
+            <button onClick={() => test()}>click</button>
+        
         </div>
     )
 };
