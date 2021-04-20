@@ -1,6 +1,8 @@
 body {
     margin: 0;
 }
+
+
 div.navbar {
     height: 80px;
     position: sticky;
@@ -11,7 +13,6 @@ div.navbar {
     justify-content: space-between;
     align-items: center;
     padding-left: 10px;
-
 
     ul {
         list-style: none;
@@ -26,9 +27,7 @@ div.navbar {
 div.home {
     border: 3px solid red;
     margin-top: 15px;
-
     height: 1000px;
-
     display: grid;
     grid-template-columns: 25 25 25 25 ;
 }

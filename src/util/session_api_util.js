@@ -21,7 +21,7 @@ export const currentUser = () => {
   return axios.get('/api/users/current')
 };
 
-export const journals = () => {
-  return axios.get('/api/users/current')
+export const createJournal = (journal) => {
+  return axios.post('/api/journals/new', journal);
 }
 
