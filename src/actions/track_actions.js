@@ -44,3 +44,9 @@ export const deleteTrack = trackId => dispatch => {
       .then(res => { dispatch(removeTrack(res.data))})
       .catch(err => dispatch(receiveErrors(err.response.data)))
 }
+
+export const newTrackEntry = entry => dispatch => {
+    TrackAPI.addTrackEntry(entry)
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
+}

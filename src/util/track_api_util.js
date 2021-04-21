@@ -13,3 +13,7 @@ export const indexTracks = () => {
 export const deleteTrack = id => {
   return axios.delete(`/api/tracks/${id}`)
 }
+
+export const addTrackEntry = (entry) => {
+  return axios.post('/api/track-entries', entry)
+}

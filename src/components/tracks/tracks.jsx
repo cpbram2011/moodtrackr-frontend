@@ -1,6 +1,7 @@
 import React, {Component, useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {requestTracks, newTrack, deleteTrack} from '../../actions/track_actions';
+import TrackEntries from './track_entries';
 
 
 const Tracks = () => {
@@ -14,7 +15,10 @@ const Tracks = () => {
     const trackLis = Object.values(tracks).map(x => {
         
         return (
+            <>
             <li key={x._id} >{x.name} <button onClick={() => { dispatch(deleteTrack(x._id))}}>Delete</button></li>
+            <TrackEntries track={x} />
+            </>
         )
     })
     
