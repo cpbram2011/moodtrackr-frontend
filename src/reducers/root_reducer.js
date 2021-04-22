@@ -5,15 +5,15 @@ import errors from "./errors_reducer";
 // import alert from "./alerts_reducers";
 import tracks from './tracks_reducer';
 import trackEntries from './track_entries_reducer';
+import entities from './entities_reducer';
+
 
 const RootReducer = combineReducers({
   session,
   errors,
   modal,
-  tracks,
-  trackEntries
-  // alert,
-  // question
+  entities
+ 
 });
 
 export default RootReducer;

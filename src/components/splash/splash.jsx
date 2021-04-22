@@ -10,7 +10,7 @@ const Splash = () => {
     return (
         <div className="splash">
             <h1>Mood Trackr</h1>
-            <h2>Learn more about your depression :D</h2>
+            <h2>track yer mood</h2>
             <button onClick={() => dispatch(openModal("login"))}>Log In</button>
             <button onClick={() => dispatch(openModal("signup"))}>Sign Up</button>
 

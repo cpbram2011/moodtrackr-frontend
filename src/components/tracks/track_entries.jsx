@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import { newTrackEntry, requestEntries } from '../../actions/track_entry_actions';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 
-const TrackEntries = ({track}) => {
+const TrackEntriesComponent = ({track}) => {
     const dispatch = useDispatch();
 
     const [rating, updateRating] = useState(0);
@@ -14,6 +14,7 @@ const TrackEntries = ({track}) => {
     var dd = today.getDate();
     var mm = today.getMonth()+1; 
     var yyyy = today.getFullYear();
+
     if(dd<10){
             dd='0'+dd
         } 
@@ -25,6 +26,24 @@ const TrackEntries = ({track}) => {
     useEffect(() => {
         dispatch(requestEntries(track._id))
     }, [])
+    const entries = useSelector(state => state.entities.trackEntries[track._id])
+    let entryLis = false;
+
+    if (entries) {
+
+        entryLis = entries.map(x => {
+            return (
+                <ul>
+                    <p>{x.text}</p>
+                    <p>{x.rating}</p>
+                    <p>{x.date}</p>
+                </ul>
+            )
+        })
+    }
+
+
+
     const handleSubmit = e => {
         e.preventDefault();
         const newEntry = {
@@ -37,8 +56,9 @@ const TrackEntries = ({track}) => {
     };
 
     return (
-        <div className="new-track">
-
+        <div className="new-entry">
+            {!!entryLis ? entryLis : null}
+            <p>add new entry:</p>
             <form onSubmit={e => handleSubmit(e)}>
                 <input type="text" onChange={e=>updateText(e.target.value)}/>
                 <input type="number" onChange={e=>updateRating(e.target.value)} min="1" max="10"/>
@@ -50,4 +70,4 @@ const TrackEntries = ({track}) => {
     )
 }
 
-export default TrackEntries;
+export default TrackEntriesComponent;

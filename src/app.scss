@@ -44,6 +44,23 @@ p.error {
     border-color: red;
 }
 
+.new-entry {
+    ul {
+        border: 1px solid black;
+        display: flex;
+        justify-content: space-around;
+    }
+}
+.tracks {
+    li {
+        color: red;
+        list-style: none;
+        font-size: larger;
+        margin-top: 10px;
+        border-top: 3px solid black;
+    }
+}
+
 
 div.navbar {
     height: 80px;

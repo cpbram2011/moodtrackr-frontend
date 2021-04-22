@@ -8,7 +8,7 @@ const Tracks = () => {
     const [trackName, updateTrackName] = useState("");
     const dispatch = useDispatch();
     const user_id = useSelector(state => state.session.user.id);
-    const tracks = useSelector(state => state.tracks);
+    const tracks = useSelector(state => state.entities.tracks);
     useEffect (()=> {
         dispatch(requestTracks())
     }, [])
@@ -29,9 +29,10 @@ const Tracks = () => {
                 <p>user_id = {user_id}</p>
             <div className="tracks">
                 {trackLis}
-
+                <li></li>
             </div>
             <div className="new-track">
+                <h3>Add a new tracker:</h3>
                 <form onSubmit={e => {
                     e.preventDefault();
                     dispatch(newTrack({user_id, name: trackName }))

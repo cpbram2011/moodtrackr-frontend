@@ -16,8 +16,9 @@ export const receiveEntries = payload => {
 export const requestEntries = trackId => dispatch => {
     EntryAPI.indexTrackEntries(trackId)
       .then(res => dispatch(receiveEntries(res.data)))
-      .catch(err => console.log(err))
+      .catch(err => dispatch(receiveErrors(err)))
 };
+
 
 
 export const newTrackEntry = entry => dispatch => {

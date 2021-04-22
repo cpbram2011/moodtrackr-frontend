@@ -1,3 +1,56 @@
+
+
+BACKEND SCHEMA
+
+user
+  -username
+  -email
+  -password_digest
+
+tracker
+  -user_id
+  -name
+
+tracker entry
+  -tracker_id
+  -Date
+  -rating
+  -etc.
+
+
+FRONTEND SCHEMA
+{
+    session: {
+        isAuthenticated: true,
+        user: {email, username, id, etc.}
+    },
+    entities: {
+        trackers: [{TrackerTitle, id, etc.}, {}, {}],
+        trackerEntries: {
+            tracker_id: [{EntryDate, id, etc.}, {}, {}],
+            tracker_id: [{EntryDate, id, etc.}, {}, {}]
+        }
+    },
+    errors: {
+    },
+    modal: {
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
