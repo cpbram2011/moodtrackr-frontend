@@ -8,7 +8,7 @@ const Tracks = () => {
     const [trackName, updateTrackName] = useState("");
     const dispatch = useDispatch();
     const user_id = useSelector(state => state.session.user.id);
-    const tracks = useSelector(state => state.track);
+    const tracks = useSelector(state => state.tracks);
     useEffect (()=> {
         dispatch(requestTracks())
     }, [])
@@ -16,7 +16,7 @@ const Tracks = () => {
         
         return (
             <>
-            <li key={x._id} >{x.name} <button onClick={() => { dispatch(deleteTrack(x._id))}}>Delete</button></li>
+            <li key={x._id} id={x._id}>{x.name} <button onClick={() => { dispatch(deleteTrack(x._id))}}>Delete</button></li>
             <TrackEntries track={x} />
             </>
         )

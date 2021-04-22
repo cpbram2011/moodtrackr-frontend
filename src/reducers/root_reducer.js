@@ -3,13 +3,15 @@ import session from "./session_reducers";
 import modal from "./modal_reducer";
 import errors from "./errors_reducer";
 // import alert from "./alerts_reducers";
-import track from './tracks_reducer';
+import tracks from './tracks_reducer';
+import trackEntries from './track_entries_reducer';
 
 const RootReducer = combineReducers({
   session,
   errors,
   modal,
-  track
+  tracks,
+  trackEntries
   // alert,
   // question
 });

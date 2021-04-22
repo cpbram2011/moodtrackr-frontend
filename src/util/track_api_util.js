@@ -14,6 +14,10 @@ export const deleteTrack = id => {
   return axios.delete(`/api/tracks/${id}`)
 }
 
+export const indexTrackEntries = trackId => {
+  return axios.get(`/api/track-entries/${trackId}`)
+}
+
 export const addTrackEntry = (entry) => {
   return axios.post('/api/track-entries', entry)
 }
