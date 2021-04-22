@@ -12,8 +12,8 @@ const Tracks = () => {
     useEffect (()=> {
         dispatch(requestTracks())
     }, [])
+    
     const trackLis = Object.values(tracks).map(x => {
-        
         return (
             <>
             <li key={x._id} id={x._id}>{x.name} <button onClick={() => { dispatch(deleteTrack(x._id))}}>Delete</button></li>
@@ -26,15 +26,17 @@ const Tracks = () => {
     
         return (
             <>
+                <p>user_id = {user_id}</p>
             <div className="tracks">
                 {trackLis}
-                <p>{user_id}</p>
 
             </div>
             <div className="new-track">
                 <form onSubmit={e => {
                     e.preventDefault();
-                    dispatch(newTrack({user_id, name: trackName }))}}>
+                    dispatch(newTrack({user_id, name: trackName }))
+                    e.target.firstElementChild.value = '';
+                    }}>
                     <input type="text" onChange={e => updateTrackName(e.target.value)}/>
                     <input type="submit"/>
                 </form>
