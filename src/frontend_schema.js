@@ -8,7 +8,7 @@ FRONTEND_SCHEMA =
     },
     entities: {
         trackers: [{TrackerTitle, id, etc}, {}, {}],
-        trackerEntries: { //append only on :show, (consider cleanup)
+        trackerEntries: { //append only on tracker:show, (consider cleanup)
             tracker_id: [{EntryDate, id, etc}, {}, {}],
             tracker_id: [{EntryDate, id, etc}, {}, {}]
         }

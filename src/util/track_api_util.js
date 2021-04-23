@@ -15,7 +15,7 @@ export const deleteTrack = id => {
 }
 
 export const indexTrackEntries = trackId => {
-  return axios.get(`/api/track-entries/${trackId}`)
+  return axios.get(`/api/track-entries/week/${trackId}`)
 }
 
 export const addTrackEntry = (entry) => {

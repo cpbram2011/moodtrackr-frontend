@@ -18,25 +18,21 @@ tracker entry
   -etc.
 
 
-FRONTEND SCHEMA
-{
-    session: {
-        isAuthenticated: true,
-        user: {email, username, id, etc.}
-    },
-    entities: {
-        trackers: [{TrackerTitle, id, etc.}, {}, {}],
-        trackerEntries: {
-            tracker_id: [{EntryDate, id, etc.}, {}, {}],
-            tracker_id: [{EntryDate, id, etc.}, {}, {}]
-        }
-    },
-    errors: {
-    },
-    modal: {
-        
-    }
-}
+
+
+tracks: Array(2)
+0:
+createdAt: "2021-04-22T20:24:26.409Z"
+name: "workout"
+updatedAt: "2021-04-22T20:24:26.409Z"
+user_id: "607710e416899410dd950367"
+__v: 0
+_id: "6081db7a2b2cd305dfbd4a19",
+<!-- entryID: [
+  'entry1-ID',
+  'entry2-ID',
+  'entry3-ID',
+] -->
 
 
 
