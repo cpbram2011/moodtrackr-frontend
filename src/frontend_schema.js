@@ -1,5 +1,6 @@
 
 
+
 FRONTEND_SCHEMA = 
 {
     session: {
