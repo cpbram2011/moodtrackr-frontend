@@ -91,3 +91,18 @@ div.home {
     display: grid;
     grid-template-columns: 25 25 25 25 ;
 }
+
+div.week {
+    border: 1px solid red;
+    display: flex;
+    
+    div {
+        flex-grow: 1;
+        border: 1px solid green;
+        p {
+            margin-top: 0.01em;
+            display: inline-block;
+        }
+    }
+}
+

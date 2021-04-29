@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import { newTrackEntry, requestEntries } from '../../actions/track_entry_actions';
 import {useDispatch, useSelector} from 'react-redux';
+import {week, dotw, parseISOString} from '../../util/date';
 
 
 const TrackEntriesComponent = ({track}) => {
     const dispatch = useDispatch();
-
     const [rating, updateRating] = useState(0);
     const [text, updateText] = useState("");
     const [date, updateDate] = useState(new Date());
@@ -14,7 +14,7 @@ const TrackEntriesComponent = ({track}) => {
     var dd = today.getDate();
     var mm = today.getMonth()+1; 
     var yyyy = today.getFullYear();
-
+    
     if(dd<10){
             dd='0'+dd
         } 
@@ -26,24 +26,56 @@ const TrackEntriesComponent = ({track}) => {
     useEffect(() => {
         dispatch(requestEntries(track._id))
     }, [])
+    
     const entries = useSelector(state => state.entities.trackEntries[track._id])
     let entryLis = false;
-
+    const entryDays = {};
+    
+    
+    
     if (entries) {
-
-        entryLis = entries.map(x => {
-            return (
-                <ul>
-                    <p>{x.text}</p>
-                    <p>{x.rating}</p>
-                    <p>{x.date}</p>
-                </ul>
-            )
-        })
+        entries.forEach(entry => {
+            const day = parseISOString(entry.date)
+            console.log(entry.date)
+            console.log(day.getUTCDate())
+            console.log('------')
+            entryDays[day.getUTCDate()] = entry;
+        });
+        window.day = entryDays;
+        window.week = week;
+        
+        // entryLis = entries.map(x => {
+        //     return (
+        //         <ul>
+        //             <p>{x.text}</p>
+        //             <p>{x.rating}</p>
+        //             <p>{x.date}</p>
+        //         </ul>
+        //     )
+        // })
     }
-
-
-
+    
+    const weekDivs = week.map((d, i) => {
+        let mapEntry;
+        if (d.getUTCDate() in entryDays) {
+            const {text, rating, date} = entryDays[d.getUTCDate()];
+            mapEntry = (
+                <li>
+                    <p>{text}</p>
+                    <p>{rating}</p>
+                    <p>{date}</p>
+                </li>
+            )
+        }
+        return (
+            <div key={i}>
+                <p>{d.getUTCDate()}</p>
+                <p>{dotw[d.getUTCDay()]}</p>
+                {mapEntry}
+            </div>
+        )   
+    })
+    
     const handleSubmit = e => {
         e.preventDefault();
         const newEntry = {
@@ -54,10 +86,15 @@ const TrackEntriesComponent = ({track}) => {
         };
         dispatch(newTrackEntry(newEntry))
     };
-
+    
     return (
         <div className="new-entry">
             {!!entryLis ? entryLis : null}
+            <div className="week"  
+            >
+                {weekDivs}
+
+            </div>
             <p>add new entry:</p>
             <form onSubmit={e => handleSubmit(e)}>
                 <input type="text" onChange={e=>updateText(e.target.value)}/>
