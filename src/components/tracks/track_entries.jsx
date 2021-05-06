@@ -36,9 +36,7 @@ const TrackEntriesComponent = ({track}) => {
     if (entries) {
         entries.forEach(entry => {
             const day = parseISOString(entry.date)
-            console.log(entry.date)
-            console.log(day.getUTCDate())
-            console.log('------')
+          
             entryDays[day.getUTCDate()] = entry;
         });
         window.day = entryDays;
