@@ -1,5 +1,5 @@
 
-$blue: #0078bd;
+$blue: #005281;
 
 
 html {
@@ -174,8 +174,26 @@ div.week {
         
     }
 
-    img {
-        width: 50%;
-        height: 50%;
+    .CarouselItem {
+        background-color: palegoldenrod;
+
+        .MuiPaper-root {
+            position: relative;
+            background-color: red;
+        }
+
+       span {
+           position: absolute;
+           top: 0;
+           left: 0;
+        }
+
+       img {
+           width: 100%;
+            
+        }
+
     }
+
+   
 }

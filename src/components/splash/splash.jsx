@@ -7,7 +7,7 @@ import sunset from './sunset.jpg'
 import friend from './friend.jpg'
 import yoga from './yoga.jpg'
 
-function makeCarousel(props){
+function makeCarousel(){
     var items = [
         {
             name: "Chart positive change",
@@ -26,7 +26,7 @@ function makeCarousel(props){
         }
     ];
     return (
-        <Carousel>
+        <Carousel className='my-car'>
             {
                 items.map( (item, i) => <Item key={i} item={item} /> )
             }
@@ -38,12 +38,12 @@ function Item(props){
     const dispatch = useDispatch();
     return (
         <Paper>
-            <h2>{props.item.name}</h2>
-            <p>{props.item.description}</p>
             <img src={props.item.img}/>
-            <Button className="CheckButton" onClick={() => dispatch(openModal("signup"))}>
-                Check it out!
-            </Button>
+            <span>
+                <h2>{props.item.name}</h2>
+                <p>{props.item.description}</p>
+            </span>
+           
         </Paper>
     )
 }
@@ -65,6 +65,9 @@ const Splash = () => {
 
             </div>
             {makeCarousel()}
+            <Button className="CheckButton" onClick={() => dispatch(openModal("signup"))}>
+                Check it out!
+            </Button>
         </div>
 
     )
