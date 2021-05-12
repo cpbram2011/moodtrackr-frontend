@@ -6,6 +6,9 @@ import {useDispatch} from 'react-redux';
 import sunset from './sunset.jpg'
 import friend from './friend.jpg'
 import yoga from './yoga.jpg'
+import { faPills, faUserClock, faChartArea, faSmile } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 function makeCarousel(){
     var items = [
@@ -35,7 +38,6 @@ function makeCarousel(){
 }
 
 function Item(props){
-    const dispatch = useDispatch();
     return (
         <Paper>
             <img src={props.item.img}/>
@@ -65,9 +67,47 @@ const Splash = () => {
 
             </div>
             {makeCarousel()}
-            <Button className="CheckButton" onClick={() => dispatch(openModal("signup"))}>
+            <div className="icons">
+                <div>
+                    <h2>
+                    <FontAwesomeIcon icon={faChartArea} />
+                    &nbsp;
+                        Charts</h2>
+                    <p>
+                    Any health measurement you want to track can be tracked and displayed on the graphical charts. Over time you'll be able to see patterns emerge that can help you identify what works and doesn't work
+                    </p>
+                </div>
+                <div>
+                    <h2>
+                    <FontAwesomeIcon icon={faPills} />
+                    &nbsp;
+                        Treament Tracking</h2>
+                    <p>
+                    Keep track of your Medications, Supplements, and Exercises. Any change in treatment can be tracked so you have a complete history. When these are shown against your charts, you can see if a treatment change had a positive or negative effect.</p>
+                </div>
+                <div>
+                    <h2>
+                    <FontAwesomeIcon icon={faUserClock} />
+                    &nbsp;
+                        Reminders</h2>
+                    <p>With Reminders you can schedule text messages or emails to be sent to you on a regular basis to remind you to take your medications or to remind you to record your mood. </p>
+                </div>
+                <div>
+                    <h2>
+                    <FontAwesomeIcon icon={faSmile} />
+                    &nbsp;
+                        Wellness</h2>
+                    <p>Mood tracking offers many benefits, leaving you more fulfilled and self-confident!</p>
+                </div>
+
+            </div>
+            <div className='check'>
+
+            <Button className="CheckButton" variant="contained" color='primary' onClick={() => dispatch(openModal("signup"))}>
                 Check it out!
             </Button>
+            </div>
+
         </div>
 
     )
