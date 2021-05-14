@@ -190,10 +190,12 @@ div.week {
             position: relative;
         }
 
+
+
        span {
            position: absolute;
            top: 0;
-           left: 0;
+           left: 10px;
            width: 100%;
             background-color: rgba($color: #ffffff, $alpha: 0.3);
            
