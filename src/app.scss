@@ -13,7 +13,8 @@ body {
 h1 {
     margin: 0;
 }
-button {
+
+.btn {
     display: inline-block;
     padding: 0.3em 1.2em;
     margin: 0 0.3em 0.3em 0;
@@ -243,9 +244,14 @@ div.week {
     }
 
     .check {
+        align-items: center;
+        background-color: #005281;
         display: flex;
+        height: 10vh;
         justify-content: center;
-        margin-bottom: 30px;
+        margin: 30px auto;
+        width: 70vw;
+        
     }
 
    

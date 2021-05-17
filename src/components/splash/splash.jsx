@@ -58,8 +58,8 @@ const Splash = () => {
             <div className="header">
                 <h1>Habitus</h1>
                 <div>
-                    <button className='login' onClick={() => dispatch(openModal("login"))}>Log In</button>
-                    <button onClick={() => dispatch(openModal("signup"))}>Sign Up</button>
+                    <button className='login btn' onClick={() => dispatch(openModal("login"))}>Log In</button>
+                    <button className='btn' onClick={() => dispatch(openModal("signup"))}>Sign Up</button>
 
 
 

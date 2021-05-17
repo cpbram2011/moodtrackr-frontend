@@ -7,9 +7,15 @@ const LoginForm = () => {
     const errors = useSelector(state => state.errors.session);
 
 
-    const useInput = type => {
+    const useInput = (type, prefill) => {
         const [value, setValue] = useState("");
-        const input = <input value={value} onChange={e => setValue(e.target.value)} type={type} />;
+        const input = <input 
+        value={value} 
+        onChange={e => setValue(e.target.value)} 
+        type={type} 
+        placeholder={prefill}
+
+        />;
         return [value, input];
     }
 
@@ -17,8 +23,8 @@ const LoginForm = () => {
         <p className='error'>{msg}</p>
     )
 
-    const [email, emailInput] = useInput("Text")
-    const [password, passwordInput] = useInput("Password")
+    const [email, emailInput] = useInput("Text", "Email")
+    const [password, passwordInput] = useInput("Password", "Password")
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -31,18 +37,18 @@ const LoginForm = () => {
         <>
         <form onSubmit={handleSubmit}>
             <label className={'email' in errors ? 'red-border' : null}>
-                Email
+                
                 {emailInput}
             </label>
             {'email' in errors ? formatErr(errors.email) : null}
 
             <label className={'password' in errors ? 'red-border' : null}>
-                Password
+                
                 {passwordInput}
             </label>
             {'password' in errors ? formatErr(errors.password) : null}
-
-            <input type="submit"/>
+            <br /><br />
+            <input type="submit" className='btn'/>
         </form>
         </>
     )

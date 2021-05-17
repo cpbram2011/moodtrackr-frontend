@@ -57,7 +57,7 @@ const SignupForm = () => {
             </label>
             {'password2' in errors ? formatErr(errors.password2) : null}
             <br /><br />
-            <input type="submit"/>
+            <input type="submit" className='btn'/>
         </form>
         </>
     )
