@@ -26,7 +26,7 @@ export const removeTrack = (track) => ({
 })
 
 
-export const requestTracks = (user_id) => dispatch => {
+export const requestTracks = () => dispatch => {
     TrackAPI.indexTracks()
       .then(res => {dispatch(receiveTracks(res.data))})
       .catch(err => dispatch(receiveErrors(err.response.data)))

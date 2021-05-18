@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 
 import LoginForm from "../session/login";
 import SignupForm from "../session/signup";
+import NewTrackForm from "../tracks/new_track";
+
 
 function Modal({ modal, closeModal }) {
   if (!modal) {
@@ -16,6 +18,9 @@ function Modal({ modal, closeModal }) {
       break;
     case "signup":
       component = <SignupForm />;
+      break;
+    case "newtrack":
+      component = <NewTrackForm />;
       break;
 
     default:

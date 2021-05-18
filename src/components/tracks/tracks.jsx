@@ -3,12 +3,13 @@ import {useDispatch, useSelector} from 'react-redux';
 import {requestTracks, newTrack, deleteTrack} from '../../actions/track_actions';
 import TrackEntries from './track_entries';
 import {week, dotw, parseISOString} from '../../util/date';
+import {openModal} from '../../actions/modal_actions'
 
 
 const Tracks = () => {
-    const [trackName, updateTrackName] = useState("");
     const dispatch = useDispatch();
-    const user_id = useSelector(state => state.session.user.id);
+    // const [trackName, updateTrackName] = useState("");
+    // const user_id = useSelector(state => state.session.user.id);
     const tracks = useSelector(state => state.entities.tracks);
 
     useEffect (()=> {
@@ -70,7 +71,8 @@ const Tracks = () => {
             </div>
                 {trackLis}
             </div>
-            <div className="new-track">
+            <button onClick={() => dispatch(openModal('newtrack'))}>Add new Track</button>
+            {/* <div className="new-track">
                 <h3>Add a new tracker:</h3>
                 <form onSubmit={e => {
                     e.preventDefault();
@@ -80,7 +82,7 @@ const Tracks = () => {
                     <input type="text" onChange={e => updateTrackName(e.target.value)}/>
                     <input type="submit"/>
                 </form>
-            </div>
+            </div> */}
             </>
         )
     

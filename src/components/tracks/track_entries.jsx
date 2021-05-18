@@ -9,6 +9,7 @@ const TrackEntriesComponent = ({track}) => {
     const [rating, updateRating] = useState(0);
     const [text, updateText] = useState("");
     const [date, updateDate] = useState(new Date());
+    const [complete, updateComplete] = useState(true);
     
     let today = new Date();
     var dd = today.getDate();
@@ -54,13 +55,19 @@ const TrackEntriesComponent = ({track}) => {
     }
     
     const weekDivs = week.map((d, i) => {
-        let mapEntry;
+        let mapEntry = 'Q';
         if (d.getUTCDate() in entryDays) {
-            let {text, rating, date} = entryDays[d.getUTCDate()];
+            let {text, rating, date, complete} = entryDays[d.getUTCDate()];
             date = new Date(date);
             date = date.getUTCDate();
+            if (complete === undefined) {
+                complete = 'O'
+            } else {
+                complete = complete ? "Y" : "N"
+            }
             mapEntry = (
                 <>
+                    <p>{complete}</p>
                     <p>{text}</p>
                     <p>{rating}</p>
                     <p>{date}</p>
@@ -82,7 +89,8 @@ const TrackEntriesComponent = ({track}) => {
             date,
             text,
             rating,
-            track_id: track._id
+            track_id: track._id,
+            complete
         };
         dispatch(newTrackEntry(newEntry))
     };
@@ -101,6 +109,7 @@ const TrackEntriesComponent = ({track}) => {
                 <input type="text" onChange={e=>updateText(e.target.value)}/>
                 <input type="number" onChange={e=>updateRating(e.target.value)} min="1" max="10"/>
                 <input type='date' onChange={e=>updateDate(new Date(e.target.value))} min='1899-01-01' max={today} />
+                <input type='checkbox' checked={complete} onChange={e=>updateComplete(!complete)} />
                 <input type="submit" value="submit"/>
 
             </form>
