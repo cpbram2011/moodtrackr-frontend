@@ -111,12 +111,19 @@ p.error {
 
 .tracks {
     li {
-        color: red;
         list-style: none;
-        font-size: larger;
-        margin-top: 10px;
-        border-top: 3px solid black;
+       
     }
+
+    .week {
+        background-color: lightblue;
+        display: grid;
+        grid-template-columns: 5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+
+        
+    }
+
+    
 }
 
 
@@ -150,25 +157,11 @@ div.home {
     grid-template-columns: 25 25 25 25 ;
 }
 
-div.week {
-    border: 1px solid red;
-    display: flex;
-    
-    div {
-        flex-grow: 1;
-        border: 1px solid green;
-        p {
-            margin-top: 0.01em;
-            display: inline-block;
-        }
-    }
-}
-
 
 
 .splash {
 
-    .header {
+    .header  {
         background-color: $blue;
         box-sizing: border-box;
         color: white;

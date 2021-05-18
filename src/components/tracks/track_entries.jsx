@@ -56,21 +56,23 @@ const TrackEntriesComponent = ({track}) => {
     const weekDivs = week.map((d, i) => {
         let mapEntry;
         if (d.getUTCDate() in entryDays) {
-            const {text, rating, date} = entryDays[d.getUTCDate()];
+            let {text, rating, date} = entryDays[d.getUTCDate()];
+            date = new Date(date);
+            date = date.getUTCDate();
             mapEntry = (
-                <li>
+                <>
                     <p>{text}</p>
                     <p>{rating}</p>
                     <p>{date}</p>
-                </li>
+                </>
             )
         }
         return (
-            <div key={i}>
-                <p>{d.getUTCDate()}</p>
-                <p>{dotw[d.getUTCDay()]}</p>
+            <li key={i}>
+                {/* <p>{d.getUTCDate()}</p>
+                <p>{dotw[d.getUTCDay()]}</p> */}
                 {mapEntry}
-            </div>
+            </li>
         )   
     })
     
@@ -86,13 +88,14 @@ const TrackEntriesComponent = ({track}) => {
     };
     
     return (
-        <div className="new-entry">
+        <>
             {!!entryLis ? entryLis : null}
-            <div className="week"  
-            >
+            <div className="week"  >
+                {track.name}
                 {weekDivs}
 
             </div>
+        <div className="new-entry">
             <p>add new entry:</p>
             <form onSubmit={e => handleSubmit(e)}>
                 <input type="text" onChange={e=>updateText(e.target.value)}/>
@@ -102,6 +105,7 @@ const TrackEntriesComponent = ({track}) => {
 
             </form>
         </div>
+        </>
     )
 }
 
