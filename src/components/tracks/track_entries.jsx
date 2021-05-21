@@ -65,6 +65,7 @@ const TrackEntriesComponent = ({track}) => {
             } else {
                 complete = complete ? "Y" : "N"
             }
+            
             mapEntry = (
                 <>
                     <p>{complete}</p>
