@@ -15,6 +15,7 @@ const HomePage = () => {
             <p onClick={() => updateSelected('tracks')}>Tracks</p>
             <p onClick={() => updateSelected('shop')}>Shop</p>
         </div>
+        
         <div className="home">
             {selected === 'tracks' ? <Tracks /> : null }
             {selected === 'shop' ? <Shop /> : null }
